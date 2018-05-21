@@ -8,8 +8,8 @@ import { FeedPage } from '../feed/feed';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = FeedPage;
+  tab1Root = FeedPage;
+  tab2Root = HomePage;
 
   constructor() {
 

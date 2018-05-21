@@ -16,20 +16,16 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item>
+    <ion-item (click)="goToPage('FeedPage')">
+      <ion-icon name="videocam-outline" item-start></ion-icon>
+      IMDB API - Now Playing Movies
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goToPage('IntroPage')">
       <ion-icon name="ios-apps-outline" item-start></ion-icon>
-      Introdução
+      Visualizar páginas de Introdução
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-icon name="home-outline" item-start></ion-icon>
-      Início
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-        <ion-icon name="paper-outline" item-start></ion-icon>
-        Feed
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-    </ion-list>
+  </ion-list>
+
 </ion-content>

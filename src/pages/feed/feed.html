@@ -15,41 +15,48 @@
 
 <ion-content padding>
 
-  <ion-card>
+  <!-- Insiro a diretiva ngFor para varrer toda a lista de filmes e popular os cards-->
+  <ion-card *ngFor="let movie of list_movies">
 
     <ion-item>
       <ion-avatar item-start>
         <img src="assets/images/avatar.png">
       </ion-avatar>
-      <h2 class="feed_title">{{ user_name }}</h2>
-      <p class="feed_date">{{ update_date }}</p>
+      <h2 class="feed_title">{{ movie.title }}</h2>
+      <p class="feed_date">{{ movie.original_title }}</p>
+      <p class="feed_date">{{ movie.release_date }}</p>
     </ion-item>
 
-    <img src="assets/images/feed_image.png">
+    <!-- Aqui é necessário utilizar outra diretiva do Angular para permitir -->
+    <!-- de variável dentro do src, utilizando a notaçãp [src] -->
+    <!-- Com esta notação não deve ser usada a interpolação no formato {{ }} para variáveis -->
+    <img [src]="tmdb_image_url + movie.backdrop_path">
 
     <ion-card-content>
-      <p>Estou criando meu primeiro add, começando por uma página de feeds.</p>
+      <p>{{ movie.overview }}</p>
     </ion-card-content>
 
+    <!--
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <div>{{ json_feed.qtd_likes}} likes</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{ json_feed.qtd_comments}} comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
         <ion-note>
-          11h ago
+            {{ json_feed.time_comment }}
         </ion-note>
       </ion-col>
     </ion-row>
+    -->
 
   </ion-card>
 

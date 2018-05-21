@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IntroPage } from '../intro/intro';
+import { FeedPage } from '../feed/feed';
 
 /**
  * Generated class for the MenuPage page.
@@ -22,4 +24,7 @@ export class MenuPage {
     console.log('ionViewDidLoad MenuPage');
   }
 
+  goToPage(page_module:string) {
+    this.navCtrl.push(page_module);
+  }
 }

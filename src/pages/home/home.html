@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Navegação</ion-title>
+    <ion-title>Sobre</ion-title>
       <ion-buttons start>
         <button ion-button (click)="goToMenuPage()">
           <ion-icon name="menu"></ion-icon>
@@ -12,73 +12,14 @@
 <ion-spinner name="bubbles"></ion-spinner>
 
 <ion-content padding>  
-  <h2>Bem-Vindo ao myApp!</h2>
+  <h2>Sobre este Aplicativo</h2>
   <p>
-    Este aplicativo foi desenvolvido utilizando o template
-    <br><code>ionic start myApp tabs</code>
-    <br>e estou trabalhando em alguns exemplos da internet
+    Este aplicativo está sendo desenvolvido utilizando o template de tabs
+    do Ionic 3 e será construído para se conectar com APIs da Web para 
+    a construção de feeds.
   </p>
-
-  <!-- Social Card -->
-  <ion-card>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/logo.png">
-      </ion-avatar>
-      <h2>Título</h2>
-      <p>dd.mm.aaaa</p>
-    </ion-item>
-  
-    <img src="../../assets/imgs/logo.png">
-  
-    <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-    </ion-card-content>
-  
-    <ion-row>
-      <ion-col center text-center>
-        <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
-        </button>
-      </ion-col>
-      <ion-col center text-center>
-        <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
-      </ion-col>
-    </ion-row>
-  
-  </ion-card>
-
-  <!-- Map Card -->
-  <ion-card>
-
-    <img src="i../../assets/imgs/logo.png">
-  
-    <ion-item>
-      <ion-icon name="football" item-start large></ion-icon>
-      <h2>Museum of Football</h2>
-      <p>11 N. Way St, Madison, WI 53703</p>
-    </ion-item>
-  
-    <ion-item>
-      <ion-icon name="wine" item-left large ></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-  
-    <ion-item>
-      <span item-left>18 min</span>
-      <span item-left>(2.6 mi)</span>
-      <button ion-button icon-left clear item-end>
-        <ion-icon name="navigate"></ion-icon>
-        Start
-      </button>
-    </ion-item>
-  
-  </ion-card>
-
+  <p>
+    O primeiro feed a ser construído será o do IMDB, exibindo uma lista de cards
+    com os filmes em cartaz nos cinemas brasileiros.
+  </p>
 </ion-content>
