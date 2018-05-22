@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 // Aqui foi incluído o MovieProvider
 import { MovieProvider } from '../../providers/movie/movie';
+import { LoadFailPage } from '../load-fail/load-fail';
 
 /**
  * Generated class for the MoviePage page.
@@ -15,13 +16,13 @@ import { MovieProvider } from '../../providers/movie/movie';
 
 // Aqui foi incluído o MovieProvider
 @Component({
-  selector: 'page-movie',
-  templateUrl: 'movie.html',
+  selector: 'page-movie-feed',
+  templateUrl: 'movie-feed.html',
   providers: [
     MovieProvider
   ]
 })
-export class MoviePage {
+export class MovieFeedPage {
 
   // Primeiro, foram criadas variáveis para substituir os textos fixos dos cards no feed
   // public user_name:string = "Romulo Monteiro";
@@ -39,24 +40,27 @@ export class MoviePage {
   // }
 
   //
-  public tmdb_image_url:string = "https://image.tmdb.org/t/p/w500";
+  public tmdb_image_url:string = "https://image.tmdb.org/t/p/w780";
   public list_movies = new Array<any>();
   
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     // aqui foi incluído manualmente o MovieProvider após ser criado por ionic cli
-    private movieProvider: MovieProvider) {
+    private movieProvider: MovieProvider,
+    // qui foi incluído manualmente o LoadingController para o carregamento da página
+    public loadingCtrl: LoadingController) {
   }
 
-  goToPage(page_module:string) {
-    this.navCtrl.push(page_module);
-  }
-
-  public go
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MoviePage');
-
+  doPageLoad() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Pegue sua pipoca...',
+      dismissOnPageChange: true
+    });
+  
+    loading.present();
+  
     // Aqui foi chamada a funçao criada dentro do provider
     this.movieProvider.getMovies("now_playing").subscribe(
       data  => { 
@@ -78,6 +82,34 @@ export class MoviePage {
       },
       error => { console.log(error); }
     )
+
+    setTimeout(() => {
+      console.log('Dismissed loading');
+      this.navCtrl.push(LoadFailPage);
+      loading.dismiss();
+    }, 10000);
+
+    //loading.onDidDismiss(() => {
+    //  console.log('Dismissed loading');
+    //});
+  }
+
+  doRefresh(refresher) {
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+  
+  goToPage(page_module:string) {
+    this.navCtrl.push(page_module);
+  }
+
+  public go
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MovieFeedPage');
+    this.doPageLoad();
+
   }
 
 }

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 
 /**
- * Generated class for the IntroPage page.
+ * Generated class for the LoadFailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,21 +10,16 @@ import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
-  selector: 'page-intro',
-  templateUrl: 'intro.html',
+  selector: 'page-load-fail',
+  templateUrl: 'load-fail.html',
 })
-export class IntroPage {
-
-  public MonteirosRM:string = "MonteirosRM";
+export class LoadFailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
+    console.log('ionViewDidLoad LoadFailPage');
   }
 
-  goToTabsPage() {
-    this.navCtrl.push(TabsPage);
-  }
 }

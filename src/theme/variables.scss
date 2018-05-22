@@ -23,8 +23,6 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -46,6 +44,8 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+$spinner-ios-bubbles-color: yellow;
+$spinner-ios-ios-color: yellow;
 
 
 
@@ -53,6 +53,8 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$spinner-md-bubbles-color: yellow;
+$spinner-md-ios-color: yellow;
 
 
 

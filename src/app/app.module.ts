@@ -11,8 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MenuPageModule } from '../pages/menu/menu.module';
-import { MoviePageModule } from '../pages/movie/movie.module';
+import { MovieFeedPageModule } from '../pages/movie-feed/movie-feed.module';
 import { MovieProvider } from '../providers/movie/movie';
+import { LoadFailPageModule } from '../pages/load-fail/load-fail.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MovieProvider } from '../providers/movie/movie';
     IonicModule.forRoot(MonteirosRM), 
     IntroPageModule, 
     MenuPageModule, 
-    MoviePageModule
+    MovieFeedPageModule,
+    LoadFailPageModule
   ],
   bootstrap: [
     IonicApp

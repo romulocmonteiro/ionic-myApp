@@ -1,7 +1,7 @@
 page-intro {
 
     .scroll-content {
-        background-image: url("../assets/images/slides/slides-bg.png");
+        background-image: url("../assets/images/intro/slides-bg.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -12,11 +12,11 @@ page-intro {
         //left: 0;
     }
 
-    .slide_image img {
+    .intro_slide img {
         width: 280px;
     }
-
-    p {
+    .intro_slide p {
         font-size: 0.8em;
+        color: black;
     }
 }

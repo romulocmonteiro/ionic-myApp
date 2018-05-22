@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { HomePage } from '../home/home';
-import { MoviePage } from '../movie/movie';
+import { MovieFeedPage } from '../movie-feed/movie-feed';
+import { NavController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -9,10 +10,14 @@ import { MoviePage } from '../movie/movie';
 
 export class TabsPage {
   
-  tab1Root = MoviePage;
+  tab1Root = MovieFeedPage;
   tab2Root = HomePage;
 
-  constructor() {
-
+  constructor(public navCtrl: NavController) {
   }
+
+  goToPage(page_module:string) {
+    this.navCtrl.push(page_module);
+  }
+
 }
