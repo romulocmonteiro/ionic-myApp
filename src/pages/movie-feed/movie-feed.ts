@@ -59,8 +59,35 @@ export class MovieFeedPage {
       dismissOnPageChange: true
     });
   
+    console.log('Loading...');
     loading.present();
+
+    setTimeout(() => {
+      console.log('Dismissed loading');
+      loading.dismiss();
+    }, 10000);
+
+    //loading.onDidDismiss(() => {
+    //  console.log('Dismissed loading');
+    //});
+  }
   
+  doRefresh(refresher) {
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 1000);
+  }
+  
+  goToPage(page_module:string) {
+    this.navCtrl.push(page_module);
+  }
+
+  public go
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MovieFeedPage');
+    this.doPageLoad();
+
     // Aqui foi chamada a funçao criada dentro do provider
     this.movieProvider.getMovies("now_playing").subscribe(
       data  => { 
@@ -80,35 +107,8 @@ export class MovieFeedPage {
         // esta linha de código não é obrigatória
         console.log(obj_return);
       },
-      error => { console.log(error); }
-    )
-
-    setTimeout(() => {
-      console.log('Dismissed loading');
-      this.navCtrl.push(LoadFailPage);
-      loading.dismiss();
-    }, 10000);
-
-    //loading.onDidDismiss(() => {
-    //  console.log('Dismissed loading');
-    //});
-  }
-
-  doRefresh(refresher) {
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
-  }
-  
-  goToPage(page_module:string) {
-    this.navCtrl.push(page_module);
-  }
-
-  public go
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MovieFeedPage');
-    this.doPageLoad();
+      error => { this.navCtrl.push(LoadFailPage) }
+    );
 
   }
 

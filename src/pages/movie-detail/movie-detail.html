@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detalhes do Filme</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 
   <ion-card>
     <ion-list>
-      <ion-item>
+      <ion-item class="movie_title">
         <h2 class="movie_title">{{ json_movie.title }}</h2>
         <p>
           <a [href]="json_movie.homepage">{{json_movie.homepage}}</a>
@@ -34,19 +34,19 @@
 
   <ion-card>
     <ion-list>
-      <ion-item>
+      <ion-item class="movie_title">
         <h2 class="movie_title">Filmes Semelhantes</h2>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item>
-        <ion-icon name="videocam-outline" item-start></ion-icon>
-        <p>Filme 1</p>
+        <ion-icon name="videocam" item-start></ion-icon>
+        <p class="movie_detail_link">Homem de Ferro 3</p>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
       <ion-item>
-        <ion-icon name="videocam-outline" item-start></ion-icon>
-        <p>Filme 1</p>
+        <ion-icon name="videocam" item-start></ion-icon>
+        <p class="movie_detail_link">Capitão América</p>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
     </ion-list>

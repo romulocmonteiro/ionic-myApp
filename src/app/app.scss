@@ -17,15 +17,29 @@
 
   .scroll-content {
     background-color: rgb(255, 255, 255);
+    background-image: url("../assets/images/bg-blue.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .load_fail {
+      color: white;
   }
 
   h2.movie_title{
     color: royalblue;
     font-weight: bold;
+    font-size: 14pt;
   }
-  h3.movie_title{
-    color: royalblue;
-    font-weight: bold;
+  
+  p.intro_slide {
+    font-size: 0.8em;
+    color: black;
   }
   p.movie_date {
       color: gray;        
@@ -33,4 +47,63 @@
   p.movie_detail_link {
       color: royalblue;
       font-weight: bold;
+  }
+  
+  img.intro_slide {
+    width: 280px;
+  }
+
+  .load_fail, .about {
+    color: white;
+  }
+
+  ion-card.card.card-md {
+    margin-bottom: 20px;
+  }
+  
+  ion-card.card.card-ios {
+    margin-bottom: 20px;
+  }
+
+  ion-item.movie_title {
+    background-color: #f4f4f4;
+  }
+
+  .toolbar {
+    border-bottom-width: 5px;
+    box-shadow: 0px 1px 2px white;
+  }
+
+  // Background das barras de menu
+  .toolbar-background {
+    background-color: rgb(6, 2, 39);
+    background-image: url("../assets/images/logo.png");
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  // Botoes na barra de menu para iOS
+  .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: white;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: small;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  // Botoes na barra de menu para Android
+  button.disable-hover.bar-button.bar-button-md.bar-button-default.bar-button-default-md {
+    color: white;
+    background-color: transparent;
+    font-weight: 600;
+    //font-size: small;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  // Bordas entre os itens de menu no iOS
+  .list-ios .item-block .item-inner {
+    border-bottom: 0px solid #c8c7cc;
   }

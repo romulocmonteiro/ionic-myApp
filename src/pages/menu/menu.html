@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Menu</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,14 +16,24 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item (click)="goToPage('MoviePage')">
-      <ion-icon name="videocam-outline" item-start></ion-icon>
-      IMDB API - Now Playing Movies
+    <ion-item (click)="goToPage('MovieFeedPage')">
+      <ion-icon name="videocam" item-start></ion-icon>
+      IMDB API - Now Playing
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item (click)="goToPage('IntroPage')">
-      <ion-icon name="ios-apps-outline" item-start></ion-icon>
-      Visualizar páginas de Introdução
+    <ion-item (click)="goToPage('InstagramFeedPage')">
+      <ion-icon name="logo-instagram" item-start></ion-icon>
+      Instagram Feed
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (click)="goToPage('TwitterFeedPage')">
+      <ion-icon name="logo-twitter" item-start></ion-icon>
+      Twitter Feed
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+      <ion-item (click)="goToPage('IntroPage')">
+      <ion-icon name="ios-apps" item-start></ion-icon>
+      Introdução
       <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
   </ion-list>
