@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { IntroPage } from '../intro/intro';
-import { FeedPage } from '../feed/feed';
+//import { IntroPage } from '../intro/intro';
+//import { MoviePage } from '../movie/movie';
 
 /**
  * Generated class for the MenuPage page.

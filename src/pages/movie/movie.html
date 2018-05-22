@@ -1,5 +1,5 @@
 <!--
-  Generated template for the FeedPage page.
+  Generated template for the MoviePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Feed</ion-title>
+    <ion-title>TMDB Feed</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,40 +19,46 @@
   <ion-card *ngFor="let movie of list_movies">
 
     <ion-item>
+      <!--
       <ion-avatar item-start>
         <img src="assets/images/avatar.png">
       </ion-avatar>
-      <h2 class="feed_title">{{ movie.title }}</h2>
-      <p class="feed_date">{{ movie.original_title }}</p>
-      <p class="feed_date">{{ movie.release_date }}</p>
+      -->
+      <h2 class="movie_title" (click)="goToPage('MovieDetailPage')">{{ movie.title }}</h2>
+      <p class="movie_date">{{ movie.original_title }}</p>
+      <p class="movie_date">{{ movie.release_date }}</p>
     </ion-item>
 
     <!-- Aqui é necessário utilizar outra diretiva do Angular para permitir -->
     <!-- de variável dentro do src, utilizando a notaçãp [src] -->
     <!-- Com esta notação não deve ser usada a interpolação no formato {{ }} para variáveis -->
-    <img [src]="tmdb_image_url + movie.backdrop_path">
+    <img [src]="tmdb_image_url + movie.backdrop_path" (click)="goToPage('MovieDetailPage')">
 
-    <ion-card-content>
+    <!--
+      <ion-card-content>
       <p>{{ movie.overview }}</p>
+      <br>
+      <p class="movie_detail_link" (click)="goToPage('MovieDetailPage')">Ver detalhes {{ movie.id }}</p>
     </ion-card-content>
+    -->
 
     <!--
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{ json_feed.qtd_likes}} likes</div>
+          <div>{{ json_movie.qtd_likes}} likes</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>{{ json_feed.qtd_comments}} comments</div>
+          <div>{{ json_movie.qtd_comments}} comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
         <ion-note>
-            {{ json_feed.time_comment }}
+            {{ json_movie.time_comment }}
         </ion-note>
       </ion-col>
     </ion-row>

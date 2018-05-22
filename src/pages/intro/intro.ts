@@ -16,7 +16,7 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class IntroPage {
 
-  public myApp:string = "Aplicativo";
+  public MonteirosRM:string = "Aplicativo";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

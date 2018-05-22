@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
 
 /**
- * Generated class for the FeedPage page.
+ * Generated class for the MoviePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,31 +15,31 @@ import { MovieProvider } from '../../providers/movie/movie';
 
 // Aqui foi incluído o MovieProvider
 @Component({
-  selector: 'page-feed',
-  templateUrl: 'feed.html',
+  selector: 'page-movie',
+  templateUrl: 'movie.html',
   providers: [
     MovieProvider
   ]
 })
-export class FeedPage {
+export class MoviePage {
 
-  //Primeiro, foram criadas variáveis para substituir os textos fixos dos cards no feed
-  public user_name:string = "Romulo Monteiro";
-  public update_date:any = "18/12/1981";
+  // Primeiro, foram criadas variáveis para substituir os textos fixos dos cards no feed
+  // public user_name:string = "Romulo Monteiro";
+  // public update_date:any = "18/12/1981";
 
-  //Depois, foi criado um json mock para popular os dados no lugar das vari[aveis]
-  public json_feed = {
-    avatar: "",
-    name: "Romulo Monteiro",
-    date: "18/12/1981",
-    desc: "Estou criando meu primeiro add, começando por uma página de feeds.",
-    qtd_likes: 12,
-    qtd_comments: 12,
-    time_comment: "10h ago"
-  }
+  // Depois, foi criado um json mock para popular os dados no lugar das variáveis
+  // public json_movie = {
+  //   avatar: "",
+  //   name: "Romulo Monteiro",
+  //   date: "18/12/1981",
+  //   desc: "Estou criando meu primeiro app, começando por uma página de feed de filmes.",
+  //   qtd_likes: 12,
+  //   qtd_comments: 12,
+  //   time_comment: "10h ago"
+  // }
 
   //
-  public tmdb_image_url:string = "https://image.tmdb.org/t/p/w300";
+  public tmdb_image_url:string = "https://image.tmdb.org/t/p/w500";
   public list_movies = new Array<any>();
   
   constructor(
@@ -49,12 +49,13 @@ export class FeedPage {
     private movieProvider: MovieProvider) {
   }
 
-  public somaDoisNumeros(num1:number, num2:number):void{
-    alert(num1 + num2);
+  goToPage(page_module:string) {
+    this.navCtrl.push(page_module);
   }
 
+  public go
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
+    console.log('ionViewDidLoad MoviePage');
 
     // Aqui foi chamada a funçao criada dentro do provider
     this.movieProvider.getMovies("now_playing").subscribe(
