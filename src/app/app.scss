@@ -15,9 +15,12 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-  .scroll-content {
-    background-color: rgb(255, 255, 255);
-    background-image: url("../assets/images/bg-blue.png");
+ion-content.has-refresher > .scroll-content {
+  background-color: #7e9397;
+}
+.scroll-content, .ion-content, .content-md {
+    background-color: #7e9397;
+    //background-image: url("../assets/images/bg-blue.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -32,27 +35,31 @@
   }
 
   h2.movie_title{
-    color: royalblue;
+    color: #020225;
     font-weight: bold;
     font-size: 14pt;
   }
   
+  h4.intro_slide {
+    color: white;
+    margin-top: 0px;
+  }
   p.intro_slide {
     font-size: 0.8em;
-    color: black;
+    color: white;
   }
-  p.movie_date {
-      color: gray;        
-  }
-  p.movie_detail_link {
-      color: royalblue;
-      font-weight: bold;
-  }
-  
   img.intro_slide {
     width: 280px;
   }
 
+  p.movie_date {
+      color: gray;        
+  }
+  p.movie_detail_link {
+      color: #020225;
+      font-weight: bold;
+  }
+  
   .load_fail, .about {
     color: white;
   }
@@ -66,26 +73,26 @@
   }
 
   ion-item.movie_title {
-    background-color: #f4f4f4;
+    background-color: #eeeeee;
   }
 
   .toolbar {
     border-bottom-width: 5px;
-    box-shadow: 0px 1px 2px white;
+    box-shadow: 0px 1px 2px #eeeeee;
   }
 
   // Background das barras de menu
   .toolbar-background {
-    background-color: rgb(6, 2, 39);
+    background-color: #020225;
     background-image: url("../assets/images/logo.png");
-    background-size: 30%;
+    background-size: 120px;
     background-position: center;
     background-repeat: no-repeat;
   }
 
   // Botoes na barra de menu para iOS
   .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
-    color: white;
+    color: #eeeeee;
     background-color: transparent;
     font-weight: 600;
     font-size: small;
@@ -95,15 +102,39 @@
 
   // Botoes na barra de menu para Android
   button.disable-hover.bar-button.bar-button-md.bar-button-default.bar-button-default-md {
-    color: white;
+    color: #eeeeee;
     background-color: transparent;
     font-weight: 600;
     //font-size: small;
+    text-transform: none;
     padding-right: 10px;
     padding-left: 10px;
   }
 
   // Bordas entre os itens de menu no iOS
   .list-ios .item-block .item-inner {
-    border-bottom: 0px solid #c8c7cc;
+    border-bottom: 0px solid #c8d4d6;;
   }
+
+  .tabbar.show-tabbar {
+    background-color: #020225;
+  }
+
+  ion-icon::before {
+    display: inline-block;
+    color: #94a5a8;
+  } 
+
+  ion-icon::after {
+    display: inline-block;
+    color: #94a5a8;
+  } 
+
+  button.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #020225;
+}
+
+.tabs-md .tab-button[aria-selected=true] {
+  text-shadow: 2px 2px #456c73;
+  text-decoration-line: overline underline;
+}
