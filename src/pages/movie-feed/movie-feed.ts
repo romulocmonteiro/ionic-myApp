@@ -65,7 +65,7 @@ export class MovieFeedPage {
     setTimeout(() => {
       console.log('Dismissed loading');
       loading.dismiss();
-    }, 10000);
+    }, 5000);
 
     //loading.onDidDismiss(() => {
     //  console.log('Dismissed loading');
@@ -74,9 +74,8 @@ export class MovieFeedPage {
   
   doRefresh(refresher) {
     setTimeout(() => {
-      console.log('Async operation has ended');
       refresher.complete();
-    }, 1000);
+    }, 2000);
   }
   
   goToPage(page_module:string) {
@@ -85,7 +84,6 @@ export class MovieFeedPage {
 
   public go
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MovieFeedPage');
     this.doPageLoad();
 
     // Aqui foi chamada a funçao criada dentro do provider

@@ -1,33 +1,46 @@
-<ion-header no-border>
-  <ion-toolbar>
-    <ion-buttons left>
-      <button ion-button (click)="goToMenuPage()">
-        Menu
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+<!--
+  Generated template for the AboutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      Menu
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+
 </ion-header>
 
 <ion-spinner name="bubbles"></ion-spinner>
 
 <ion-content padding class="about">  
-  <h2>Sobre este Aplicativo</h2>
-  <p>
-    Este aplicativo está sendo desenvolvido utilizando as tecnologias Node.js, Angular.js,
-    Ionic 3 e Cordova para geração de um aplicativo híbrido para celulares Androis e iOS.
-  </p>
-  <p>
-    Neste aplicativo farei testes de criação telas em Slides, Tabs e Menus fazendo a transição
-    dinâmica de dados entre as diferentes telas do aplicativo.
-  </p>
-  <p>
-    A prmeira funcionalidade construída é o <strong>TMDB</strong>, um feed de filmes
-    sendo exibidos em cinemas do Brasil, utilizando como base os métodos da API do site TMDB.
-    Nesta funcionalidade, serão apresentadas 3 telas:
-  </p>
-  <ul>
-    <li>Lista de filmes em cartaz (sem paginação)
-    <li>Tela de detalhes de um filme selecionado
-    <li>Tela de detalhes de um filme semelhante, selecionado na tela anterior
-  </ul>
-</ion-content>
+    <h2>Sobre este Aplicativo</h2>
+    <p>
+      Este aplicativo está sendo desenvolvido utilizando as tecnologias Node.js, Angular.js,
+      Ionic 3 e Cordova para geração de um aplicativo híbrido para celulares Androis e iOS.
+    </p>
+    <p>
+      Neste aplicativo farei testes de criação telas em Slides, Tabs e Menus fazendo a transição
+      dinâmica de dados entre as diferentes telas do aplicativo.
+    </p>
+    <p>
+      A prmeira funcionalidade construída é o <strong>TMDB</strong>, um feed de filmes
+      sendo exibidos em cinemas do Brasil, utilizando como base os métodos da API do site TMDB.
+      Nesta funcionalidade, serão apresentadas 3 telas:
+    </p>
+    <ul>
+      <li>Lista de filmes em cartaz (sem paginação)
+      <li>Tela de detalhes de um filme selecionado
+      <li>Tela de detalhes de um filme semelhante, selecionado na tela anterior
+    </ul>
+  
+    <ion-item>
+        <ion-label>Re-exibir Introdução ao iniciar</ion-label>
+        <ion-toggle checked="false" (change)="setIntro(true)"></ion-toggle>
+      </ion-item>
+     
+  </ion-content>

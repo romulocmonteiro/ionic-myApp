@@ -6,16 +6,37 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPage } from '../pages/intro/intro';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { ConfigProvider } from '../providers/config/config';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  // Foi incluído o provider ConfigProvider para utilizar a lógica de exibição da IntroPage
+  providers: [ ConfigProvider ]
 })
 export class MonteirosRM {
-  rootPage:any = IntroPage;
+  rootPage:any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen,
+    configProvider: ConfigProvider
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      
+      let config = configProvider.getConfigData();
+      console.log(config);
+      if (config == null) {
+        this.rootPage = IntroPage
+        configProvider.setConfigData(false);
+      }
+      else {
+        this.rootPage = TabsPage;
+      }
+      
+      
       if(platform.is('android')) {
         statusBar.styleLightContent();
       } else {
