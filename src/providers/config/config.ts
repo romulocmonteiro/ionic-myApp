@@ -1,26 +1,12 @@
-//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-/*
-  Generated class for the ConfigProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 
 let config_key_name = "config";
 
 @Injectable()
 export class ConfigProvider {
 
-  private config = {
-    show_slide : true,
-    name : "",
-    username : ""
-  }
-
   constructor() {
-    console.log('Hello ConfigProvider Provider');
+    console.log('ConfigProvider carregado no construtor');
   }
 
   // Função para recuperar os dados do local storage
@@ -29,26 +15,30 @@ export class ConfigProvider {
   }
 
   // Função para definir os dados do local storage
-  setConfigData(show_slide? : boolean, name? : string, username? : string) {
-
+  setConfigData(
+    slide_dismiss?:boolean, 
+    movie_feed_category = "now_playing",
+    movie_id = ""
+  ) {
     let config = {
-      show_slide : true,
-      name : "",
-      username : ""
+      slide_dismiss : false,
+      movie_feed_category : "",
+      movie_id : ""
     }
 
-    if (show_slide) {
-      config.show_slide = show_slide;
+    if (slide_dismiss) {
+      config.slide_dismiss = slide_dismiss;
     }
 
-    if (name) {
-      config.name = name;
+    if (config.movie_feed_category != movie_feed_category) {
+      config.movie_feed_category = movie_feed_category;
     }
 
-    if (show_slide) {
-      config.username = username;
+    if (config.movie_id != movie_id) {
+      config.movie_id = movie_id;
     }
 
+    // defino no localStorage o item config_key_name com os dados da estrutura config
     localStorage.setItem(config_key_name, JSON.stringify(config));
   }
 

@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the InstagramFeedPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-instagram-feed',
@@ -19,7 +12,7 @@ export class InstagramFeedPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InstagramFeedPage');
+    console.log('Feed InstagramFeedPage carregado');
   }
 
 }

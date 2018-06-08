@@ -17,17 +17,17 @@
   <ion-card>
     <ion-list>
       <ion-item class="movie_title">
-        <h2 class="movie_title">{{ json_movie.title }}</h2>
+        <h2 class="movie_title">{{ json_movie_detail.title }}</h2>
         <p>
-          <a [href]="json_movie.homepage">{{json_movie.homepage}}</a>
+          <a [href]="json_movie_detail.homepage">{{json_movie_detail.homepage}}</a>
         </p>
       </ion-item>
     </ion-list>
 
-    <img [src]="tmdb_image_url + json_movie.poster_path">
+    <img [src]="tmdb_image_url + json_movie_detail.poster_path">
 
     <ion-card-content>
-      <p>{{ json_movie.overview }}</p>
+      <p>{{ json_movie_detail.overview }}</p>
     </ion-card-content>
 
   </ion-card>
@@ -38,17 +38,13 @@
         <h2 class="movie_title">Filmes Semelhantes</h2>
       </ion-item>
     </ion-list>
-    <ion-list>
-      <ion-item>
+    <ion-list *ngFor="let similar_movie of json_similar_movies">
+      <ion-item (click)="getMovieDetail(similar_movie.id)">
         <ion-icon name="videocam" item-start></ion-icon>
-        <p class="movie_detail_link">Homem de Ferro 3</p>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="videocam" item-start></ion-icon>
-        <p class="movie_detail_link">Capitão América</p>
+        <p class="movie_detail_link">{{ similar_movie.title }}</p>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
     </ion-list>
   </ion-card>
+
 </ion-content>

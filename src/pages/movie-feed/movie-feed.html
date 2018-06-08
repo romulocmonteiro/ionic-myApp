@@ -24,11 +24,23 @@
     </ion-refresher-content>
   </ion-refresher>
 
+  <!-- Insiro uma lista de opções para a seleção dos filmes -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Selecione seu Feed</ion-label>
+      <ion-select [(ngModel)]="feed_category" interface="popover">
+        <ion-option value="now_playing" (ionSelect)="ionViewDidLoad(feed_category)">Nos cinemas</ion-option>
+        <ion-option value="popular" (ionSelect)="ionViewDidLoad(feed_category)">Populares</ion-option>
+        <ion-option value="upcoming" (ionSelect)="ionViewDidLoad(feed_category)">Breve nos cinemas</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
   <!-- Insiro a diretiva ngFor para varrer toda a lista de filmes e popular os cards-->
   <ion-card *ngFor="let movie of list_movies">
 
     <ion-item class="movie_title">
-      <h2 class="movie_title" (click)="goToPage('MovieDetailPage')">{{ movie.title }}</h2>
+      <h2 class="movie_title" (click)="getMovieDetail(movie.id)">{{ movie.title }}</h2>
       <p class="movie_date">{{ movie.original_title }}</p>
       <p class="movie_date">{{ movie.release_date }}</p>
     </ion-item>
@@ -39,10 +51,10 @@
       <!-- de variável dentro do src, utilizando a notaçãp [src] -->
       <!-- Com esta notação não deve ser usada a interpolação no formato {{ }} para variáveis -->
       <ng-template #validImage>
-        <img [src]="tmdb_image_url + movie.backdrop_path" (click)="goToPage('MovieDetailPage')">
+        <img [src]="tmdb_image_url + movie.backdrop_path" (click)="getMovieDetail(movie_id)">
       </ng-template>
       <ng-template #notValidImage>
-        <img src="assets/images/no-image.png" (click)="goToPage('MovieDetailPage')">
+        <img src="assets/images/no-image.png" (click)="getMovieDetail(movie_id)">
       </ng-template>
 
   </ion-card>

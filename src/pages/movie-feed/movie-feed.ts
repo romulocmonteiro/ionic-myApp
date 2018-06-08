@@ -4,13 +4,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 // Aqui foi incluído o MovieProvider
 import { MovieProvider } from '../../providers/movie/movie';
 import { LoadFailPage } from '../load-fail/load-fail';
-
-/**
- * Generated class for the MoviePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ConfigProvider } from '../../providers/config/config';
 
 @IonicPage()
 
@@ -19,6 +13,7 @@ import { LoadFailPage } from '../load-fail/load-fail';
   selector: 'page-movie-feed',
   templateUrl: 'movie-feed.html',
   providers: [
+    ConfigProvider,
     MovieProvider
   ]
 })
@@ -46,30 +41,33 @@ export class MovieFeedPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    // aqui foi incluído manualmente o MovieProvider após ser criado por ionic cli
+    // aqui foram incluídos manualmente os providers
     private movieProvider: MovieProvider,
-    // qui foi incluído manualmente o LoadingController para o carregamento da página
+    private configProvider: ConfigProvider,
+    // aqui foi incluído manualmente o LoadingController para o carregamento da página
     public loadingCtrl: LoadingController) {
-  }
+
+    }
 
   doPageLoad() {
+
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Pegue sua pipoca...',
       dismissOnPageChange: true
     });
   
-    console.log('Loading...');
-    loading.present();
-
     setTimeout(() => {
-      console.log('Dismissed loading');
+      console.log('Timeout atingido');
       loading.dismiss();
-    }, 5000);
+    }, 2000);
 
-    //loading.onDidDismiss(() => {
-    //  console.log('Dismissed loading');
-    //});
+    loading.present();
+    console.log('Carregando o feed MovieFeedPage. Aguardando timeout');
+
+    loading.onDidDismiss(() => {
+      console.log('Feed MovieFeedPage carregado');
+    });
   }
   
   doRefresh(refresher) {
@@ -78,16 +76,27 @@ export class MovieFeedPage {
     }, 2000);
   }
   
-  goToPage(page_module:string) {
-    this.navCtrl.push(page_module);
+  getMovieDetail(movie_id) {
+    this.configProvider.setConfigData(true, undefined, movie_id);
+    console.log('Movie_id = '+ movie_id);
+    this.navCtrl.push("MovieDetailPage");
   }
 
   public go
-  ionViewDidLoad() {
+  ionViewDidLoad(movie_feed_category:string) {
+
+    if (movie_feed_category) {
+      this.configProvider.setConfigData(true, movie_feed_category);
+      console.log('Feed atual = ' + movie_feed_category)
+    } else {
+      let config = JSON.parse(localStorage.getItem("config"));
+      movie_feed_category = config.movie_feed_category;
+    }
+
     this.doPageLoad();
 
     // Aqui foi chamada a funçao criada dentro do provider
-    this.movieProvider.getMovies("now_playing").subscribe(
+    this.movieProvider.getMoviesByCategory(movie_feed_category).subscribe(
       data  => { 
         // crio um objeto para receber a resposta da chamada http
         // fazendo um cast da estrutura data para any (semelhante a void)
@@ -98,11 +107,10 @@ export class MovieFeedPage {
         // carrego meu arrey de filmes list_movies com o campo results do JSON de retorno
         this.list_movies = obj_return.results;
         
-        // retorno para o console a url da conexão http
-        // esta linha de código não é obrigatória
+        // retorno para o console a url da conexão http e o objeto retornado
+        console.log('URL utilizada para o feed');
         console.log(data.url);
-        // retorno para o console a estrutura do JSON de forma mais legível
-        // esta linha de código não é obrigatória
+        console.log('Objeto retornado para montagem do feed');
         console.log(obj_return);
       },
       error => { this.navCtrl.push(LoadFailPage) }

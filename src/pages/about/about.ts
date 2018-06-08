@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ConfigProvider } from '../../providers/config/config';
 
-/**
- * Generated class for the AboutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-about',
@@ -23,19 +16,16 @@ export class AboutPage {
     configProvider: ConfigProvider
   ) {
 
-      let config = configProvider.getConfigData();
+      let config = JSON.parse(localStorage.getItem("config"));
 
-      console.log(config);
-
-      if (config.show_slide) {
-        configProvider.setConfigData(false);
-        console.log(config);
+      if (config.slide_dismiss) {
+        configProvider.setConfigData(true,"","teste");
       }
 
     }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
+    console.log('Página AboutPage carregada');
   }
 
 }

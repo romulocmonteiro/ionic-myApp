@@ -20,23 +20,26 @@ export class MonteirosRM {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    configProvider: ConfigProvider
+    public configProvider: ConfigProvider
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       
-      let config = configProvider.getConfigData();
+      let config = JSON.parse(localStorage.getItem("config"));
+      console.log('Dados recuperados do localStorage na variável "config"');
       console.log(config);
+
       if (config == null) {
         this.rootPage = IntroPage
-        configProvider.setConfigData(false);
-      }
-      else {
-        this.rootPage = TabsPage;
-      }
-      
-      
+        configProvider.setConfigData(true);
+        } else if (!config.slide_dismiss) {
+        this.rootPage = IntroPage;
+        configProvider.setConfigData(true);
+        } else {
+        this.rootPage = TabsPage
+        }
+
       if(platform.is('android')) {
         statusBar.styleLightContent();
       } else {
@@ -46,4 +49,5 @@ export class MonteirosRM {
     });
 
   }
+  
 }   

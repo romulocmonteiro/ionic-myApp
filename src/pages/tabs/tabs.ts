@@ -20,6 +20,10 @@ export class TabsPage {
   constructor(public navCtrl: NavController) {
   }
 
+  ionViewDidLoad() {
+    console.log('Página TabsPage carregada');
+  }
+
   goToPage(page_module:string) {
     this.navCtrl.push(page_module);
   }
