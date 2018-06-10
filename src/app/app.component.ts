@@ -32,10 +32,10 @@ export class MonteirosRM {
 
       if (config == null) {
         this.rootPage = IntroPage
-        configProvider.setConfigData(true);
+        configProvider.setConfigData(true, "day_mode");
         } else if (!config.slide_dismiss) {
         this.rootPage = IntroPage;
-        configProvider.setConfigData(true);
+        configProvider.setConfigData(true, "day_mode");
         } else {
         this.rootPage = TabsPage
         }

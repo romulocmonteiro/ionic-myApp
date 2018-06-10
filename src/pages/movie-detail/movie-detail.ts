@@ -22,7 +22,7 @@ export class MovieDetailPage {
   }
 
   getMovieDetail(movie_id) {
-    this.configProvider.setConfigData(true, undefined, movie_id);
+    this.configProvider.setConfigData(true, "day_mode", undefined, movie_id);
     console.log('Movie_id = '+ movie_id);
     this.navCtrl.push("MovieDetailPage");
   }

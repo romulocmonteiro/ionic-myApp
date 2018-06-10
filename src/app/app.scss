@@ -1,143 +1,177 @@
-// http://ionicframework.com/docs/theming/
-
-
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
-
-ion-content.has-refresher > .scroll-content {
-  background-color: #7e9397;
+// Customizações da barra superior de menu
+ion-navbar.day_mode .toolbar-background,
+ion-toolbar.day_mode.toolbar.toolbar-md,
+ion-toolbar.day_mode.toolbar.toolbar-ios {
+  background-color: $bg-color-light;
+  background-image: $logo-dark;
+  background-size: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.scroll-content, .ion-content, .content-md {
-    background-color: #7e9397;
-    //background-image: url("../assets/images/bg-blue.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+ion-navbar.night_mode .toolbar-background,
+ion-toolbar.night_mode.toolbar.toolbar-md,
+ion-toolbar.night_mode.toolbar.toolbar-ios{
+  background-color: $bg-color-dark;
+  background-image: $logo-light;
+  background-size: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .load_fail {
-      color: white;
-  }
+// Customizações da barra inferior de menu
+ion-tabs.day_mode .tabbar.show-tabbar {
+  background-color: $bg-color-light;
+}
+ion-tabs.night_mode .tabbar.show-tabbar {
+  background-color: $bg-color-dark;
+}
 
-  h2.movie_title{
-    color: #020225;
-    font-weight: bold;
-    font-size: 14pt;
-  }
+// Customizações da área principal das telas
+ion-content.day_mode.content.content-md.has-refresher,
+ion-content.day_mode.content.content-ios.has-refresher {
+  background-image: $bg-img-light;
+  background-color: $bg-color-light;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 10px;
+  text-align: justify;
+  color: $font-dark
+}
+ion-content.night_mode.content.content-md > .scroll-content,
+ion-content.night_mode.content.content-ios > .scroll-content {
+  background-image: $bg-img-dark;
+  background-color: $bg-color-dark;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 10px;
+  text-align: justify;
+  color: $font-light
+}
+
+// Customizações dos itens da tela
+ion-item.day_mode {
+  background-color: $bg-color-light;
+  color: $font-dark;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+ion-item.night_mode {
+  background-color: $bg-color-dark;
+  color: $font-light;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+//Janela popover
+ion-item.item.item-block.item-ios.item-radio,
+ion-item.item.item-block.item-md.item-radio  {
+  background-color: $bg-color-dark;
+  color: $font-light;
+  font-size: 1.3rem;
+}
+
+button.day_mode.item.item-block.item-ios, 
+button.day_mode.item.item-block.item-md {
+  padding-left: 10px;
+  background-color: $bg-color-light;
+  color: $font-dark;
+  font-size: 1.4rem;
+}
+button.night_mode.item.item-block.item-ios, 
+button.night_mode.item.item-block.item-md {
+  padding-left: 10px;
+  background-color: $bg-color-dark;
+  color: $font-light;
+  font-size: 1.4rem;
+}
+
+// Botoes na barra de menu para iOS
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default {
+  font-weight: 600;
+  font-size: small;
+
+}
+
+  // Customizações de tags de HTML padrão
+p.day_mode {
+  color: $font-dark;
+  font-size: 1.3rem;
+}
+p.night_mode {
+  color: $font-light;
+  font-size: 1.3rem;
+}
+h2.day_mode, h4.day_mode {
+  color: $font-dark;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+h2.night_mode, h4.night_mode {
+  color: $font-light;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+img.slide{
+  height: 280px;
+}
+
+
+/*  // fundo das telas principais do app
+ion-card-content, ion-item.item.item-block.item-md.item-ios.item-radio {
+  background-color: #494e5d;
+  border: 0px;
+  font-size: 1.5rem;
+}
+
+.item-ios, .item-md {
+  background-color: #34363f;
+  border: 0px;
+  font-size: 1.5rem;
+}
+
+ion-card.card.card-ios, ion-card.card.card-md {
+  margin: 0px 0px 20px 0px;
+  width: 100%;
+}
   
-  h4.intro_slide {
-    color: white;
-    margin-top: 0px;
-  }
-  p.intro_slide {
-    font-size: 0.8em;
-    color: white;
-  }
-  img.intro_slide {
-    width: 280px;
-  }
-  img.under_construction, img.settings {
-    height: 150px;
-  }
 
-  p.movie_date {
-      color: gray;        
-  }
-  p.movie_detail_link {
-      color: #020225;
-      font-weight: bold;
-  }
-  
-  .load_fail, .about {
-    color: white;
-  }
+button.item.item-block.item-ios, button.item.item-block.item-md, .item-icon {
+  padding: 0px;
+  margin-bottom: 2px;
+  background: transparent;
+}
 
-  ion-card.card.card-md {
-    margin-bottom: 20px;
-  }
-  
-  ion-card.card.card-ios {
-    margin-bottom: 20px;
-  }
 
-  ion-item.movie_title {
-    background-color: #eeeeee;
-  }
 
+  // Barra de menú de todas as telas
   .toolbar {
     border-bottom-width: 5px;
-    box-shadow: 0px 1px 2px #eeeeee;
-  }
-
-  // Background das barras de menu
-  .toolbar-background {
-    background-color: #020225;
-    background-image: url("../assets/images/logo.png");
-    background-size: 120px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  // Botoes na barra de menu para iOS
-  .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
-    color: #eeeeee;
-    background-color: transparent;
-    font-weight: 600;
-    font-size: small;
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-
-  // Botoes na barra de menu para Android
-  button.disable-hover.bar-button.bar-button-md.bar-button-default.bar-button-default-md {
-    color: #eeeeee;
-    background-color: transparent;
-    font-weight: 600;
-    //font-size: small;
-    text-transform: none;
-    padding-right: 10px;
-    padding-left: 10px;
+    box-shadow: 0px 1px 2px #000010;
   }
 
   // Bordas entre os itens de menu no iOS
   .list-ios .item-block .item-inner {
-    border-bottom: 0px solid #c8d4d6;;
+    border-bottom: 0px solid;
   }
 
-  .tabbar.show-tabbar {
-    background-color: #020225;
-  }
+// Ícones do rodapé
+ion-icon::before, ion-icon::after {
+  display: block;
+  color: white;
+} 
 
-  ion-icon::before {
-    display: inline-block;
-    color: #94a5a8;
-  } 
-
-  ion-icon::after {
-    display: inline-block;
-    color: #94a5a8;
-  } 
-
-  button.swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: #020225;
+button.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #000010;
 }
 
 .tabs-md .tab-button[aria-selected=true] {
-  text-shadow: 2px 2px #456c73;
-  text-decoration-line: overline underline;
+  text-shadow: 2px 2px 2px blue;
 }
+
+.tabs-md .tab-button[aria-selected=false] {
+  text-shadow: 2px 2px 2px gray;
+} */

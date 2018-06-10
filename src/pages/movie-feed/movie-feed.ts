@@ -77,7 +77,7 @@ export class MovieFeedPage {
   }
   
   getMovieDetail(movie_id) {
-    this.configProvider.setConfigData(true, undefined, movie_id);
+    this.configProvider.setConfigData(true, "day_mode", undefined, movie_id);
     console.log('Movie_id = '+ movie_id);
     this.navCtrl.push("MovieDetailPage");
   }
@@ -86,7 +86,7 @@ export class MovieFeedPage {
   ionViewDidLoad(movie_feed_category:string) {
 
     if (movie_feed_category) {
-      this.configProvider.setConfigData(true, movie_feed_category);
+      this.configProvider.setConfigData(true, "day_mode", movie_feed_category, undefined);
       console.log('Feed atual = ' + movie_feed_category)
     } else {
       let config = JSON.parse(localStorage.getItem("config"));

@@ -17,17 +17,23 @@ export class ConfigProvider {
   // Função para definir os dados do local storage
   setConfigData(
     slide_dismiss?:boolean, 
+    css_mode = "day_mode",
     movie_feed_category = "now_playing",
     movie_id = ""
   ) {
     let config = {
       slide_dismiss : false,
+      css_mode : "",
       movie_feed_category : "",
       movie_id : ""
     }
 
     if (slide_dismiss) {
       config.slide_dismiss = slide_dismiss;
+    }
+
+    if (config.css_mode != css_mode) {
+      config.css_mode = css_mode;
     }
 
     if (config.movie_feed_category != movie_feed_category) {

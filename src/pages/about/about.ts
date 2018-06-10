@@ -16,12 +16,6 @@ export class AboutPage {
     configProvider: ConfigProvider
   ) {
 
-      let config = JSON.parse(localStorage.getItem("config"));
-
-      if (config.slide_dismiss) {
-        configProvider.setConfigData(true,"","teste");
-      }
-
     }
 
   ionViewDidLoad() {
