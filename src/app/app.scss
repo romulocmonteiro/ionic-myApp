@@ -96,6 +96,13 @@ button.night_mode.item.item-block.item-md {
 
 }
 
+ion-avatar,
+ion-avatar > img {
+    border-radius:20%;
+    height:12rem;
+    width:12rem;
+}
+
   // Customizações de tags de HTML padrão
 p.day_mode {
   color: $font-dark;

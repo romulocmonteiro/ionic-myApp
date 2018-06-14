@@ -24,4 +24,11 @@ export class MovieProvider {
     return this.http.get(this.tmdb_url + "/movie/" + id + "/similar?api_key=" + this.api_key + "&language=pt-BR&region=BR");
   }
 
+  getExternalIdsById(id:string) {
+    return this.http.get(this.tmdb_url + "/movie/" + id + "/external_ids?api_key=" + this.api_key);
+  }
+
+  getMovieCreditsById(id:string) {
+    return this.http.get(this.tmdb_url + "/movie/" + id + "/credits?api_key=" + this.api_key);
+  }
 }

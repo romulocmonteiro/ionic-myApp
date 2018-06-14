@@ -24,9 +24,60 @@
 
     <img [src]="tmdb_image_url + json_movie_detail.poster_path">
 
+  </ion-card>
+
+  <ion-card>
+    <ion-item class="night_mode">
+      <h2 class="night_mode">Sinopse</h2>
+    </ion-item>
+
     <ion-card-content>
-      <p>{{ json_movie_detail.overview }}</p>
+      <p><br>{{ json_movie_detail.overview }}</p>
     </ion-card-content>
+
+    <ion-item>
+      <ion-icon name="md-videocam" color="logo-imdb" item-start></ion-icon>
+      <ion-icon name="logo-facebook" color="logo-facebook" item-start>&nbsp;</ion-icon>
+      <ion-icon name="logo-instagram" color="logo-instagram" item-start>&nbsp;</ion-icon>
+      <ion-icon name="logo-twitter" color="logo-twitter" item-start>&nbsp;</ion-icon>
+      <ion-icon name="md-happy" item-end></ion-icon>
+      <ion-badge item-end>{{ json_movie_detail.vote_average }}</ion-badge>
+    </ion-item>
+
+<!--
+      <ion-item>
+        <p>{{ json_external_ids.imdb_id }}</p>
+        <p>{{ json_external_ids.facebook_id }}</p>
+        <p>{{ json_external_ids.instagram_id }}</p>
+        <p>{{ json_external_ids.twitter_id }}</p>
+    </ion-item>
+  -->
+  
+  </ion-card>
+
+  <ion-card>
+
+    <ion-item class="night_mode">
+      <h2 class="night_mode">Principais Atores</h2>
+    </ion-item>
+  
+    <ion-slides>
+      <ion-slide *ngFor="let credit of json_movie_credits">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-row><ion-col><img [src]="tmdb_image_url + credit.profile_path" height="50%"></ion-col></ion-row>
+              <ion-row>
+                <ion-col>
+                  <h4 class="day_mode">{{ credit.name }}</h4>
+                  <p class="day_mode">{{ credit.character }}</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
 
   </ion-card>
 
@@ -36,6 +87,7 @@
         <h2 class="night_mode">Filmes Semelhantes</h2>
       </ion-item>
     </ion-list>
+
     <ion-list *ngFor="let similar_movie of json_similar_movies">
       <ion-item (click)="getMovieDetail(similar_movie.id)">
         <ion-icon name="videocam" item-start></ion-icon>

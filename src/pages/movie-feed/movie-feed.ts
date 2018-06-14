@@ -36,7 +36,8 @@ export class MovieFeedPage {
 
   //
   public tmdb_image_url:string = "https://image.tmdb.org/t/p/w780";
-  public list_movies = new Array<any>();
+  public json_list_movies = new Array<any>();
+  public json_external_ids = new Array<any>();
   
   constructor(
     public navCtrl: NavController, 
@@ -85,11 +86,12 @@ export class MovieFeedPage {
   public go
   ionViewDidLoad(movie_feed_category:string) {
 
+    let config = JSON.parse(localStorage.getItem("config"));
+
     if (movie_feed_category) {
       this.configProvider.setConfigData(true, "day_mode", movie_feed_category, undefined);
       console.log('Feed atual = ' + movie_feed_category)
     } else {
-      let config = JSON.parse(localStorage.getItem("config"));
       movie_feed_category = config.movie_feed_category;
     }
 
@@ -97,23 +99,23 @@ export class MovieFeedPage {
 
     // Aqui foi chamada a funçao criada dentro do provider
     this.movieProvider.getMoviesByCategory(movie_feed_category).subscribe(
-      data  => { 
+      data_movie  => { 
         // crio um objeto para receber a resposta da chamada http
         // fazendo um cast da estrutura data para any (semelhante a void)
-        const response = (data as any);
+        const response = (data_movie as any);
         // crio um novo objeto contendo apenas o body deste retorno
         // convertendo o seu conteúdo de string para o formato json, por meio de JSON.parse
         const obj_return = JSON.parse(response._body);
         // carrego meu arrey de filmes list_movies com o campo results do JSON de retorno
-        this.list_movies = obj_return.results;
+        this.json_list_movies = obj_return.results;
         
         // retorno para o console a url da conexão http e o objeto retornado
         console.log('URL utilizada para o feed');
-        console.log(data.url);
+        console.log(data_movie.url);
         console.log('Objeto retornado para montagem do feed');
         console.log(obj_return);
       },
-      error => { this.navCtrl.push(LoadFailPage) }
+      error_movie => { this.navCtrl.push(LoadFailPage) }
     );
 
   }

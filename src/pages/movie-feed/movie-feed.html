@@ -37,7 +37,7 @@
   </ion-card>
   
   <!-- Insiro a diretiva ngFor para varrer toda a lista de filmes e popular os cards-->
-  <ion-card *ngFor="let movie of list_movies">
+  <ion-card *ngFor="let movie of json_list_movies">
 
     <ion-item class="night_mode"> 
       <h2 class="night_mode" (click)="getMovieDetail(movie.id)">{{ movie.title }}</h2>
