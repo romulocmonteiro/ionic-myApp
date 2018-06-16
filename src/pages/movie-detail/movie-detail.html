@@ -12,73 +12,118 @@
 
 <ion-content padding class="night_mode">
 
-  <ion-card>
-    <ion-list>
+  <ion-card class="night_mode">
+
+      <img style="position:fixed;height:100%;top:40px;right:0px;opacity:0.15;filter:alpha(opacity=15%);" [src]="tmdb_image_url + json_movie_detail.poster_path" />
+
       <ion-item class="night_mode">
-        <h2 class="night_mode">{{ json_movie_detail.title }}</h2>
-        <p class="night_mode">
-          <a [href]="json_movie_detail.homepage">{{json_movie_detail.homepage}}</a>
-        </p>
-      </ion-item>
-    </ion-list>
+          <h4 class="night_mode">{{ json_movie_detail.title }}</h4>
+          <p class="night_mode">{{ json_movie_detail.tagline }}</p>
+          <a [href]="json_movie_detail.homepage"></a><ion-icon color="primary" name="md-link" item-end></ion-icon>
+        </ion-item>
 
-    <img [src]="tmdb_image_url + json_movie_detail.poster_path">
+      <ion-grid style="padding-left:10px;">
+          <ion-row> 
+            <ion-col>
+              <h2 class="night_mode">Sinopse</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>   
+            <ion-col>
+              <p class="night_mode">{{ json_movie_detail.overview }}</p>
+              <br>
+              <p class="night_mode"><b>Título Original: </b>{{ json_movie_detail.original_title }}</p>
+              <p class="night_mode"><b>Situação: </b>{{ json_movie_detail.status}}</p>
+              <p class="night_mode"><b>Data de Lançamento: </b>{{ json_movie_detail.release_date}}</p>
+              <br>
+              <p class="night_mode"><b>Gênero: </b></p>
+              <p class="night_mode" *ngFor="let genre of json_movie_detail.genres">{{ genre.name }}</p>
+              <br>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+                <h2 class="night_mode">Redes Sociais</h2>
+            </ion-col>
+            <ion-col>
+                <h2 class="night_mode">Popularidade</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <a [href]="'http://imdb.com/'+json_external_ids.imdb_id"><ion-icon class="social" name="md-videocam" item-start>&nbsp;</ion-icon></a>
+              <a [href]="'http://facebook.com/'+json_external_ids.facebook_id"><ion-icon class="social" name="logo-facebook" item-start>&nbsp;</ion-icon></a>
+              <a [href]="'http://instagram.com/'+json_external_ids.instagram_id"><ion-icon class="social" name="logo-instagram" item-start>&nbsp;</ion-icon></a>
+              <a [href]="'http://twitter.com/'+json_external_ids.twitter_id"><ion-icon class="social" name="logo-twitter" item-start>&nbsp;</ion-icon></a>
+            </ion-col>
+            <ion-col>
+              <ion-icon class="social" name="md-heart" color="danger" item-end>&nbsp;</ion-icon>
+              <ion-badge class="social" item-end>{{ json_movie_detail.vote_average }}</ion-badge>
+            </ion-col>
+          </ion-row>
+
+    </ion-grid>
 
   </ion-card>
-
-  <ion-card>
-    <ion-item class="night_mode">
-      <h2 class="night_mode">Sinopse</h2>
-    </ion-item>
-
-    <ion-card-content>
-      <p><br>{{ json_movie_detail.overview }}</p>
-    </ion-card-content>
-
-    <ion-item>
-      <ion-icon name="md-videocam" color="logo-imdb" item-start></ion-icon>
-      <ion-icon name="logo-facebook" color="logo-facebook" item-start>&nbsp;</ion-icon>
-      <ion-icon name="logo-instagram" color="logo-instagram" item-start>&nbsp;</ion-icon>
-      <ion-icon name="logo-twitter" color="logo-twitter" item-start>&nbsp;</ion-icon>
-      <ion-icon name="md-happy" item-end></ion-icon>
-      <ion-badge item-end>{{ json_movie_detail.vote_average }}</ion-badge>
-    </ion-item>
-
-<!--
-      <ion-item>
-        <p>{{ json_external_ids.imdb_id }}</p>
-        <p>{{ json_external_ids.facebook_id }}</p>
-        <p>{{ json_external_ids.instagram_id }}</p>
-        <p>{{ json_external_ids.twitter_id }}</p>
-    </ion-item>
-  -->
   
-  </ion-card>
+  <ion-card class="night_mode">
 
-  <ion-card>
+    <ion-item class="night_mode">
+        <h2 class="night_mode">Estúdios</h2>
+    </ion-item>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let company of json_movie_detail.production_companies">
+              <!-- Insiro a diretiva ngIf com ng-template para exibir a imagem apenas qdo for encontrada -->
+              <div *ngIf="company.logo_path; then validImage else notValidImage"></div>
+                  <!-- Aqui é necessário utilizar outra diretiva do Angular para permitir -->
+                  <!-- de variável dentro do src, utilizando a notaçãp [src] -->
+                  <!-- Com esta notação não deve ser usada a interpolação no formato {{ }} para variáveis -->
+                  <ng-template #validImage>
+                    <img style="border-radius: 8px" [src]="tmdb_image_url + company.logo_path">
+                    <br>
+                    <b><p class="night_mode">{{ company.name }}</p></b>
+                  </ng-template>
+                  <ng-template #notValidImage>
+                    <img style="border-radius: 8px" src="assets/images/no-image-portrait.png">
+                  </ng-template>             
+          </ion-col>
+        </ion-row>  
+    </ion-grid>  
 
     <ion-item class="night_mode">
       <h2 class="night_mode">Principais Atores</h2>
     </ion-item>
   
-    <ion-slides>
-      <ion-slide *ngFor="let credit of json_movie_credits">
-        <ion-grid>
+    <ion-grid>
+      <ion-row *ngFor="let row of grid">
+        <ion-col *ngFor="let credit of row">
           <ion-row>
             <ion-col>
-              <ion-row><ion-col><img [src]="tmdb_image_url + credit.profile_path" height="50%"></ion-col></ion-row>
-              <ion-row>
-                <ion-col>
-                  <h4 class="day_mode">{{ credit.name }}</h4>
-                  <p class="day_mode">{{ credit.character }}</p>
-                </ion-col>
-              </ion-row>
+                <!-- Insiro a diretiva ngIf com ng-template para exibir a imagem apenas qdo for encontrada -->
+                <div *ngIf="credit.profile_path; then validImage else notValidImage"></div>
+                    <!-- Aqui é necessário utilizar outra diretiva do Angular para permitir -->
+                    <!-- de variável dentro do src, utilizando a notaçãp [src] -->
+                    <!-- Com esta notação não deve ser usada a interpolação no formato {{ }} para variáveis -->
+                    <ng-template #validImage>
+                      <img style="height: 130px; width: auto; border-radius: 8px" [src]="tmdb_image_url + credit.profile_path">
+                    </ng-template>
+                    <ng-template #notValidImage>
+                      <img style="height: 130px; width: auto; border-radius: 8px" src="assets/images/no-image-portrait.png">
+                    </ng-template>             
             </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
-
+          </ion-row>  
+          <ion-row>
+            <ion-col>
+                <b><p class="night_mode">{{ credit.name }}</p></b>
+            </ion-col>
+          </ion-row>  
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+    
   </ion-card>
 
   <ion-card>
@@ -89,10 +134,10 @@
     </ion-list>
 
     <ion-list *ngFor="let similar_movie of json_similar_movies">
-      <ion-item (click)="getMovieDetail(similar_movie.id)">
-        <ion-icon name="videocam" item-start></ion-icon>
-        <p class="day_mode">{{ similar_movie.title }}</p>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
+      <ion-item class="night_mode" (click)="getMovieDetail(similar_movie.id)">
+        <ion-icon color="primary" name="videocam" item-start></ion-icon>
+        <p class="night_mode">{{ similar_movie.title }}</p>
+        <ion-icon color="primary" name="arrow-forward" item-end></ion-icon>
       </ion-item>
     </ion-list>
   </ion-card>

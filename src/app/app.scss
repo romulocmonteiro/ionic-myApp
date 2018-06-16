@@ -49,19 +49,25 @@ ion-content.night_mode.content.content-ios > .scroll-content {
   text-align: justify;
   color: $font-light
 }
+ion-card.night_mode.card.card-md,
+ion-card.night_mode.card.card-ios {
+  background-color: $bg-color-dark;
+  text-align: left;
+  color: $font-light
+}
 
 // Customizações dos itens da tela
 ion-item.day_mode {
   background-color: $bg-color-light;
   color: $font-dark;
   font-size: 1.3rem;
-  display: inline-block;
+  //display: inline-block;
 }
 ion-item.night_mode {
   background-color: $bg-color-dark;
   color: $font-light;
   font-size: 1.3rem;
-  display: inline-block;
+  //display: inline-block;
 }
 
 //Janela popover
@@ -96,14 +102,15 @@ button.night_mode.item.item-block.item-md {
 
 }
 
-ion-avatar,
-ion-avatar > img {
-    border-radius:20%;
-    height:12rem;
-    width:12rem;
+ion-icon.social {
+  font-size: 2.8rem;
+}
+ion-badge.social {
+  font-size: 2.2rem;
+  vertical-align: top;
 }
 
-  // Customizações de tags de HTML padrão
+// Customizações de tags de HTML padrão
 p.day_mode {
   color: $font-dark;
   font-size: 1.3rem;
@@ -120,65 +127,8 @@ h2.day_mode, h4.day_mode {
 h2.night_mode, h4.night_mode {
   color: $font-light;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 img.slide{
   height: 280px;
 }
-
-
-/*  // fundo das telas principais do app
-ion-card-content, ion-item.item.item-block.item-md.item-ios.item-radio {
-  background-color: #494e5d;
-  border: 0px;
-  font-size: 1.5rem;
-}
-
-.item-ios, .item-md {
-  background-color: #34363f;
-  border: 0px;
-  font-size: 1.5rem;
-}
-
-ion-card.card.card-ios, ion-card.card.card-md {
-  margin: 0px 0px 20px 0px;
-  width: 100%;
-}
-  
-
-button.item.item-block.item-ios, button.item.item-block.item-md, .item-icon {
-  padding: 0px;
-  margin-bottom: 2px;
-  background: transparent;
-}
-
-
-
-  // Barra de menú de todas as telas
-  .toolbar {
-    border-bottom-width: 5px;
-    box-shadow: 0px 1px 2px #000010;
-  }
-
-  // Bordas entre os itens de menu no iOS
-  .list-ios .item-block .item-inner {
-    border-bottom: 0px solid;
-  }
-
-// Ícones do rodapé
-ion-icon::before, ion-icon::after {
-  display: block;
-  color: white;
-} 
-
-button.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #000010;
-}
-
-.tabs-md .tab-button[aria-selected=true] {
-  text-shadow: 2px 2px 2px blue;
-}
-
-.tabs-md .tab-button[aria-selected=false] {
-  text-shadow: 2px 2px 2px gray;
-} */

@@ -41,8 +41,6 @@
 
     <ion-item class="night_mode"> 
       <h2 class="night_mode" (click)="getMovieDetail(movie.id)">{{ movie.title }}</h2>
-      <p class="night_mode">{{ movie.original_title }}</p>
-      <p class="night_mode">{{ movie.release_date }}</p>
     </ion-item>
 
     <!-- Insiro a diretiva ngIf com ng-template para exibir a imagem apenas qdo for encontrada -->
@@ -54,7 +52,7 @@
         <img [src]="tmdb_image_url + movie.backdrop_path" (click)="getMovieDetail(movie.id)">
       </ng-template>
       <ng-template #notValidImage>
-        <img src="assets/images/no-image.png" (click)="getMovieDetail(movie.id)">
+        <img src="assets/images/no-image-landscape.png" (click)="getMovieDetail(movie.id)">
       </ng-template>
 
   </ion-card>
