@@ -41,7 +41,7 @@ $colors: (
   logo-imdb: #08690d,
   logo-facebook: #2963c7,
   logo-instagram: #4d1d1d,
-  logo-twitter: #488aff
+  logo-twitter: #488aff,
 
 );
   
@@ -51,10 +51,18 @@ $bg-color-light : white;
 $bg-img-light   : url("");
 $logo-light     : url("../assets/images/logo-light.png");
 
+$my-primary: #488aff;
 $font-dark      : #000010;
 $bg-color-dark  : #000010;
 $bg-img-dark    : url("../assets/images/bg-blue.png");
 $logo-dark      : url("../assets/images/logo-dark.png");
+
+// Custoização de variáveis padronizadas do Ionic
+$refresher-icon-color   : #488aff;
+$refresher-text-color   : #488aff;
+$refresher-border-color : transparent;
+$toolbar-ios-background : #000010;
+$toolbar-md-background : #000010;
 
 // App iOS Variables
 // --------------------------------------------------

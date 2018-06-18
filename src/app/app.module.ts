@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MovieFeedPageModule } from '../pages/movie-feed/movie-feed.module';
+import { NewsFeedPageModule } from '../pages/news-feed/news-feed.module';
 import { LoadFailPageModule } from '../pages/load-fail/load-fail.module';
 import { InstagramFeedPageModule } from '../pages/instagram-feed/instagram-feed.module';
 import { TwitterFeedPageModule } from '../pages/twitter-feed/twitter-feed.module';
@@ -33,6 +34,7 @@ import { AboutPageModule } from '../pages/about/about.module';
     IonicModule.forRoot(MonteirosRM), 
     IntroPageModule, 
     MovieFeedPageModule,
+    NewsFeedPageModule,
     LoadFailPageModule,
     InstagramFeedPageModule,
     TwitterFeedPageModule,

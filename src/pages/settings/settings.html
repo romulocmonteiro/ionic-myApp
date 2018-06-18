@@ -1,28 +1,38 @@
 <ion-menu [content]="content">
 
+  <ion-header>
+    <ion-navbar class="night_mode">
+      <ion-title></ion-title>
+    </ion-navbar>
+  </ion-header>
+
   <ion-content padding class="night_mode">
     <ion-list>
-      <button class="night_mode" ion-item (click)="openPage('MovieFeedPage')">
+      <ion-item class="night_mode" (click)="openPage('MovieFeedPage')">
         <ion-icon name="md-videocam" item-start></ion-icon>
         IMDB API - Now Playing
-      </button>
-      <button class="night_mode" ion-item (click)="openPage('InstagramFeedPage')">
+      </ion-item>
+      <ion-item class="night_mode" (click)="openPage('NewsFeedPage')">
+        <ion-icon name="logo-rss" item-start></ion-icon>
+        News Feed
+      </ion-item>
+      <ion-item class="night_mode" (click)="openPage('InstagramFeedPage')">
         <ion-icon name="logo-instagram" item-start></ion-icon>
         Instagram Feed
-      </button>
-      <button class="night_mode" ion-item (click)="openPage('TwitterFeedPage')">
+      </ion-item>
+      <ion-item class="night_mode" (click)="openPage('TweeterFeedPage')">
         <ion-icon name="logo-twitter" item-start></ion-icon>
         Twitter Feed
-      </button>
-      <button class="night_mode" ion-item (click)="openPage('IntroPage')">
+      </ion-item>
+      <ion-item class="night_mode" (click)="openPage('IntroPage')">
         <ion-icon name="md-albums" item-start></ion-icon>
         Introdução
-      </button>
-      <button class="night_mode" ion-item>
+      </ion-item>
+      <ion-item class="night_mode">
         <ion-icon name="md-moon" item-start></ion-icon>
         <ion-label>CSS - Night Mode</ion-label>
         <ion-toggle checked="true"></ion-toggle>
-      </button>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

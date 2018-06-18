@@ -17,6 +17,17 @@ ion-toolbar.night_mode.toolbar.toolbar-ios{
   background-position: center;
   background-repeat: no-repeat;
 }
+.loading-md .loading-wrapper,
+.loading-ios .loading-wrapper {
+  background-color: $bg-color-dark;
+  -webkit-box-shadow: 2px 2px 2px $my-primary;
+  box-shadow: 2px 2px 5px $my-primary;
+  border-radius: 2px;
+  max-width: 280px;
+  max-height: 50%;
+  color: white;
+  padding: 24px;
+}
 
 // Customizações da barra inferior de menu
 ion-tabs.day_mode .tabbar.show-tabbar {
@@ -34,18 +45,19 @@ ion-content.day_mode.content.content-ios.has-refresher {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 10px;
+  padding: 20px;
   text-align: justify;
   color: $font-dark
 }
 ion-content.night_mode.content.content-md > .scroll-content,
-ion-content.night_mode.content.content-ios > .scroll-content {
+ion-content.night_mode.content.content-ios > .scroll-content,
+.scroll-content {
   background-image: $bg-img-dark;
   background-color: $bg-color-dark;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 10px;
+  padding: 20px;
   text-align: justify;
   color: $font-light
 }
@@ -93,13 +105,22 @@ button.night_mode.item.item-block.item-md {
   font-size: 1.4rem;
 }
 
+button.disable-hover.bar-buttons.bar-buttons-md.bar-button.bar-button-md.bar-button-default.bar-button-default-md.bar-button-menutoggle.bar-button-menutoggle-md,
+button.disable-hover.bar-buttons.bar-buttons-ios.bar-button.bar-button-ios.bar-button-default.bar-button-default-ios.bar-button-menutoggle.bar-button-menutoggle-ios {
+  color: $font-light;
+}
+
 // Botoes na barra de menu para iOS
 .bar-button-default-ios,
 .bar-button-default.bar-button-ios-default,
 .bar-button-clear-ios-default {
   font-weight: 600;
   font-size: small;
+}
 
+ion-refresher {
+  height: 100px;
+  background-color: $bg-color-dark;
 }
 
 ion-icon.social {

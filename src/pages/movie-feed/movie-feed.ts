@@ -38,6 +38,8 @@ export class MovieFeedPage {
   public tmdb_image_url:string = "https://image.tmdb.org/t/p/w780";
   public json_list_movies = new Array<any>();
   public json_external_ids = new Array<any>();
+  public json_movie_pages = new Array<any>();
+  items = [];
   
   constructor(
     public navCtrl: NavController, 
@@ -48,20 +50,24 @@ export class MovieFeedPage {
     // aqui foi incluído manualmente o LoadingController para o carregamento da página
     public loadingCtrl: LoadingController) {
 
+      for (let i = 0; i < 30; i++) {
+        this.items.push( this.items.length );
+      }
+      
     }
 
   doPageLoad() {
 
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Pegue sua pipoca...',
+      content: 'Prepare sua pipoca!',
       dismissOnPageChange: true
     });
   
     setTimeout(() => {
       console.log('Timeout atingido');
       loading.dismiss();
-    }, 2000);
+    }, 1000);
 
     loading.present();
     console.log('Carregando o feed MovieFeedPage. Aguardando timeout');
@@ -83,8 +89,21 @@ export class MovieFeedPage {
     this.navCtrl.push("MovieDetailPage");
   }
 
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      for (let i = 0; i < 30; i++) {
+        this.items.push( this.items.length );
+      }
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
+  }
+  
   public go
-  ionViewDidLoad(movie_feed_category:string) {
+  ionViewDidLoad(movie_feed_category:string, page:number) {
 
     let config = JSON.parse(localStorage.getItem("config"));
 
@@ -98,22 +117,22 @@ export class MovieFeedPage {
     this.doPageLoad();
 
     // Aqui foi chamada a funçao criada dentro do provider
-    this.movieProvider.getMoviesByCategory(movie_feed_category).subscribe(
+    this.movieProvider.getMoviesByCategory(movie_feed_category, page).subscribe(
       data_movie  => { 
         // crio um objeto para receber a resposta da chamada http
         // fazendo um cast da estrutura data para any (semelhante a void)
         const response = (data_movie as any);
         // crio um novo objeto contendo apenas o body deste retorno
         // convertendo o seu conteúdo de string para o formato json, por meio de JSON.parse
-        const obj_return = JSON.parse(response._body);
-        // carrego meu arrey de filmes list_movies com o campo results do JSON de retorno
-        this.json_list_movies = obj_return.results;
-        
+        this.json_list_movies = JSON.parse(response._body);
+        // pego o total de paginações necessárias
+        let total_pages = this.json_list_movies.total_pages;
+
         // retorno para o console a url da conexão http e o objeto retornado
         console.log('URL utilizada para o feed');
         console.log(data_movie.url);
         console.log('Objeto retornado para montagem do feed');
-        console.log(obj_return);
+        console.log(this.json_list_movies);
       },
       error_movie => { this.navCtrl.push(LoadFailPage) }
     );

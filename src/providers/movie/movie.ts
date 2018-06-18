@@ -12,8 +12,8 @@ export class MovieProvider {
     console.log('MovieProvider carregado no construtor');
   }
 
-  getMoviesByCategory(type:string) {
-    return this.http.get(this.tmdb_url + "/movie/" + type + "?api_key=" + this.api_key + "&language=pt-BR&region=BR");
+  getMoviesByCategory(type:string, page:number) {
+    return this.http.get(this.tmdb_url + "/movie/" + type + "?api_key=" + this.api_key + "&language=pt-BR&region=BR&page=" + page);
   }
 
   getMovieById(id:string) {
