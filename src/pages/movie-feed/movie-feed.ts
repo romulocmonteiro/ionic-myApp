@@ -50,10 +50,6 @@ export class MovieFeedPage {
     // aqui foi incluído manualmente o LoadingController para o carregamento da página
     public loadingCtrl: LoadingController) {
 
-      for (let i = 0; i < 30; i++) {
-        this.items.push( this.items.length );
-      }
-      
     }
 
   doPageLoad() {
@@ -125,8 +121,9 @@ export class MovieFeedPage {
         // crio um novo objeto contendo apenas o body deste retorno
         // convertendo o seu conteúdo de string para o formato json, por meio de JSON.parse
         this.json_list_movies = JSON.parse(response._body);
+        
         // pego o total de paginações necessárias
-        let total_pages = this.json_list_movies.total_pages;
+        // let total_pages = this.json_list_movies.total_pages;
 
         // retorno para o console a url da conexão http e o objeto retornado
         console.log('URL utilizada para o feed');
